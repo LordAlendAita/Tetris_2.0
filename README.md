@@ -25,7 +25,7 @@ classDiagram
         +repeat_boolean: bool
     }
 
-    Spieler "1" --> "1..1" LogInScreen : verwendet
-    Tetris "1" --> "1" Spieler : hat
-    Leaderboard "1" --> "0..1" Tetris : verwendet
+    Spieler "1" --> "1..1" LogInScreen
+    Tetris "1" --> "1" Spieler
+    Leaderboard "1" --> "0..1" Tetris
 ```
