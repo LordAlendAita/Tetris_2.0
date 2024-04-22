@@ -11,13 +11,13 @@ using Tetris_2.Database;
 namespace Tetris_2._0.Migrations
 {
     [DbContext(typeof(DatabaseDefiner))]
-    [Migration("20240412075810_InitialCreate")]
+    [Migration("20240422084925_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.29");
 
             modelBuilder.Entity("Tetris_2.Database.Scoreboard", b =>
                 {
@@ -47,22 +47,18 @@ namespace Tetris_2._0.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Account")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("HighScore")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Passwort")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TAG")
+                    b.Property<string>("Pw")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Timestamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("usern")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

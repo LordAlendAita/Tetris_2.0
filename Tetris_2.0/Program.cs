@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Threading;
 using Tetris_2.Database;
 
@@ -21,8 +22,18 @@ namespace Tetris
         //dbContext.SaveChanges();
         static void Main(string[] args)
         {
-            //Reg/Log abfrage
-            //user = handler
+            string read = "";
+            User user;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("[r]Register/[l]Login");
+                read = Console.ReadLine();
+                if (read == "r")
+                    user = RegisterScreen();
+                else if (read == "l")
+                    user = LoginScreen();
+            } while (read != "r" & read != "l");
             Console.CursorVisible = false;
             Console.Title = "Tetris";
             Console.SetWindowSize(30, 25);
@@ -33,7 +44,10 @@ namespace Tetris
                 DrawBoard();
                 MoveDown();
                 Thread.Sleep(300);
-            }
+                //Condition
+                //break;
+            }//break condition
+            //Scoreboard aktualisieren
         }
 
         static void DrawBoard()
@@ -57,7 +71,7 @@ namespace Tetris
         {
             foreach (Scoreboard score in dbContext.scoreboards)
             {
-                score.user
+                Console.WriteLine("{0,-20}||{1,10}||{2}",score.user.usern,score.user.HighScore,score.user.Timestamp);
             }
 
         }
@@ -192,9 +206,10 @@ namespace Tetris
         }
         public static User RegisterScreen()
         {
+            Console.Clear();
             Console.WriteLine("Register");
-            Console.WriteLine("Username:");
             User user = new User();
+            Console.WriteLine("Username:");
             user.usern = Console.ReadLine();
             Console.WriteLine("Passwort:");
             user.Pw = Console.ReadLine();
@@ -205,11 +220,22 @@ namespace Tetris
 
         public static User LoginScreen()
         {
-            User? user = new User();
-            //username abfrage
-            user = dbContext.Users.FirstOrDefault(x => x.usern == user.usern);
-            //user == null handeling
-            //passwortüberprüfung
+            string read;
+            User? user;
+            do
+            {
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("Login");
+                    user = new User();
+                    Console.WriteLine("Username:");
+                    user.usern = Console.ReadLine();
+                    user = dbContext.Users.FirstOrDefault(x => x.usern == user.usern);
+                } while (user == null);
+                Console.WriteLine("Passwort:");
+                read = Console.ReadLine();
+            } while (user.Pw != read);
             return user;
         }
     }

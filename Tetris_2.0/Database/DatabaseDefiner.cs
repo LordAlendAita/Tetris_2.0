@@ -26,7 +26,7 @@ namespace Tetris_2.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite(@"Data Source=C:\Users\kinga\source\repos\Tetris_2.0\Tetris_2.0\Database\Database.db");
+                optionsBuilder.UseSqlite($@"Data Source={Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\source\repos\Tetris_2.0\Tetris_2.0\Database\Database.db");
             }
             base.OnConfiguring(optionsBuilder);
         }

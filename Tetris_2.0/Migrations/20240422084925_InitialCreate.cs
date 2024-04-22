@@ -15,9 +15,8 @@ namespace Tetris_2._0.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    TAG = table.Column<string>(type: "TEXT", nullable: false),
-                    Account = table.Column<string>(type: "TEXT", nullable: false),
-                    Passwort = table.Column<string>(type: "TEXT", nullable: false),
+                    usern = table.Column<string>(type: "TEXT", nullable: false),
+                    Pw = table.Column<string>(type: "TEXT", nullable: false),
                     Timestamp = table.Column<DateTime>(type: "TEXT", nullable: false),
                     HighScore = table.Column<int>(type: "INTEGER", nullable: false)
                 },
